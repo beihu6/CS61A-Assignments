@@ -15,7 +15,7 @@ def roll_dice(num_rolls, dice=six_sided):
     the outcomes unless any of the outcomes is 1. In that case, return 1.
 
     num_rolls:  The number of dice rolls that will be made.
-    dice:       A function that simulates a single dice roll outcome. Defaults to the six sided dice.
+    dice:       A function that simulates a single dice roll outcome.
     """
     # These assert statements ensure that num_rolls is a positive integer.
     assert type(num_rolls) == int, 'num_rolls must be an integer.'
@@ -189,9 +189,9 @@ def is_always_roll(strategy, goal=GOAL):
     # END PROBLEM 7
 
 
-def make_averaged(original_function, times_called=1000):
+def make_averaged(original_function, samples_count=1000):
     """Return a function that returns the average value of ORIGINAL_FUNCTION
-    called TIMES_CALLED times.
+    called SAMPLES_COUNT times.
 
     To implement this function, you will have to use *args syntax.
 
@@ -205,8 +205,9 @@ def make_averaged(original_function, times_called=1000):
     # END PROBLEM 8
 
 
-def max_scoring_num_rolls(dice=six_sided, times_called=1000):
-    """Return the number of dice (1 to 10) that gives the maximum average score for a turn.
+def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
+    """Return the number of dice (1 to 10) that gives the highest average turn score
+    by calling roll_dice with the provided DICE a total of SAMPLES_COUNT times.
     Assume that the dice always return positive outcomes.
 
     >>> dice = make_test_dice(1, 6)
