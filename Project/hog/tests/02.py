@@ -7,41 +7,37 @@ test = {
         {
           'code': r"""
           >>> boar_brawl(21, 46)
-          872dbe4a4fe5d8451aa842c21194c866
-          # locked
+          9
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           >>> boar_brawl(52, 79)
-          af0b3285304485122429774c0ea3182a
-          # locked
+          15
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           >>> boar_brawl(0, 0)
-          43d176e102c8d95338faf8791aa509b3
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
           'code': r"""
           >>> boar_brawl(0, 5)
-          43d176e102c8d95338faf8791aa509b3
-          # locked
+          1
           """,
           'hidden': False,
-          'locked': True,
+          'locked': False,
           'multiline': False
         },
         {
