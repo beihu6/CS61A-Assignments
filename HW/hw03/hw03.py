@@ -25,6 +25,13 @@ def num_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    res=0
+    while(n>0):
+        temp=n%10
+        if(temp==8):
+            res=res+1
+        n=n//10
+    return res
 
 
 def digit_distance(n):
