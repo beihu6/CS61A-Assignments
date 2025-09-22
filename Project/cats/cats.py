@@ -225,7 +225,7 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    memo={}
+    memo={}#存储(i,j,remain_limit)对应的结果
     def helper(i,j,remain_limit):
         if(remain_limit<0):
             return float('inf')
