@@ -31,9 +31,18 @@ def pick(paragraphs, select, k):
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    temp='' 
+    count=0
+    for i in paragraphs:
+        if select(i):
+            if count==k:
+                temp=i
+                break
+            count+=1
+    return temp
     # END PROBLEM 1
 
-
+#相当于一种select函数生成器
 def about(subject):
     """Return a select function that returns whether
     a paragraph contains one of the words in SUBJECT.
@@ -50,6 +59,16 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), 'subjects should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def select(paragraph):
+        paragraph=remove_punctuation(paragraph)
+        paragraph=lower(paragraph)
+        words=split(paragraph)
+        for i in subject:
+            if i in words:
+                return True
+        return False
+    return select
+
     # END PROBLEM 2
 
 
@@ -80,6 +99,16 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if(len(typed_words)==0 and len(source_words)==0):
+        return 100.0
+    elif(len(typed_words)!=0 and len(source_words)!=0):
+        count=0
+        for i in range(min(len(typed_words),len(source_words))):
+            if(typed_words[i]==source_words[i]):
+                count+=1
+        return count/len(typed_words)*100
+    else:
+        return 0.0
     # END PROBLEM 3
 
 
@@ -98,6 +127,7 @@ def wpm(typed, elapsed):
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return len(typed)/5/(elapsed/60)
     # END PROBLEM 4
 
 
@@ -105,7 +135,7 @@ def wpm(typed, elapsed):
 # Phase 2A #
 ############
 
-
+#高阶函数，diff_function的应用极大简化了程序，也抽象了程序
 def autocorrect(typed_word, word_list, diff_function, limit):
     """Returns the element of WORD_LIST that has the smallest difference
     from TYPED_WORD. If multiple words are tied for the smallest difference,
@@ -127,9 +157,20 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if(typed_word in word_list):
+        return typed_word
+    else:
+        diff_list=[]
+        for i in word_list:
+            diff_list.append(diff_function(typed_word,i,limit))
+        if(min(diff_list)>limit):
+            return typed_word
+        else:
+            return word_list[diff_list.index(min(diff_list))]
+
     # END PROBLEM 5
 
-
+#替换一个单词所需的最少字母数
 def feline_fixes(typed, source, limit):
     """A diff function for autocorrect that determines how many letters
     in TYPED need to be substituted to create SOURCE, then adds the difference in
@@ -153,7 +194,14 @@ def feline_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    if(abs(len(typed)-len(source))>limit):
+        return limit+1
+    elif(len(typed)==0 or len(source)==0):
+        return abs(len(typed)-len(source))
+    elif(typed[0]==source[0]):
+        return feline_fixes(typed[1:],source[1:],limit)
+    else:
+        return 1+feline_fixes(typed[1:],source[1:],limit-1)
     # END PROBLEM 6
 
 
@@ -177,23 +225,27 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    memo={}
+    def helper(i,j,remain_limit):
+        if(remain_limit<0):
+            return float('inf')
+        if (i,j,remain_limit) in memo: # Base cases should go here, you may add more base cases as needed.
+            return memo[(i,j,remain_limit)]
+        if(i==len(typed)):
+            return len(source)-j
+        if(j==len(source)):
+            return len(typed)-i
+        if(typed[i]==source[j]):
+            res=helper(i+1,j+1,remain_limit)
+            memo[(i,j,remain_limit)]=res
+            return res  
+        else:
+            add = 1+helper(i,j+1,remain_limit-1) # Fill in these lines
+            remove = 1+helper(i+1,j,remain_limit-1)
+            substitute = 1+helper(i+1,j+1,remain_limit-1)
+            memo[(i,j,remain_limit)]=min(add,remove,substitute)
+            return memo[(i,j,remain_limit)]
+    return helper(0,0,limit)
 
 
 def final_diff(typed, source, limit):

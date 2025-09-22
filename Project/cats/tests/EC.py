@@ -2,7 +2,7 @@ test = {
   'name': 'Extra Credit',
   'points': 1,
   'suites': [
-      {
+    {
       'cases': [
         {
           'answer': 'A function that takes another function as an input and returns a new function that extends or modifies the behavior of the original function',
@@ -54,11 +54,11 @@ test = {
           ...       func()
           ...       print("Say Goodbye")
           ...   return wrapper
-
+          
           >>> @my_decorator
           ... def say_hello():
           ...     print("Hello World")
-
+          
           >>> say_hello()
           Say Hello
           Hello World
@@ -67,17 +67,17 @@ test = {
           'hidden': False,
           'multiline': True
         },
-                {
+        {
           'code': r"""
           >>> def magic_decorator(func):
           ...   def wrapper(x):
           ...     return func(x * 2)
           ...   return wrapper
-
+          
           >>> @magic_decorator
           ... def myfunc(x):
           ...   return x * 3
-
+          
           >>> print(myfunc(4))
           24
           """,
@@ -99,7 +99,8 @@ test = {
           True
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
@@ -115,7 +116,8 @@ test = {
           True
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         },
         {
           'code': r"""
@@ -151,7 +153,8 @@ test = {
           True
           """,
           'hidden': False,
-          'locked': False
+          'locked': False,
+          'multiline': False
         }
       ],
       'scored': True,
