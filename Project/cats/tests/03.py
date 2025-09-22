@@ -7,43 +7,43 @@ test = {
         {
           'code': r"""
           >>> accuracy("12345", "12345") # This should return 100.0 (not the integer 100!)
-          3a2c23041705bff52731f6d71741b6a2
+          29b153c9e33f1f3e87e909e781b23549
           # locked
           >>> accuracy("a b c", "a b c")
-          3a2c23041705bff52731f6d71741b6a2
+          29b153c9e33f1f3e87e909e781b23549
           # locked
           >>> accuracy("a  b  c  d", "b  a  c  d")
-          9bea7599ced675a50bbbcbf6a41ff02c
+          e790dcd7d02c731a14852c9762530dff
           # locked
           >>> accuracy("a b", "c d e")
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("Cat", "cat") # the function is case-sensitive
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("a b c d", "a d")
-          5eadfda7f07bc5c45d272ba0f6b923b2
+          7cbad8c4359bad70d88711ccbdb3b0d5
           # locked
           >>> accuracy("abc", " ")
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("a b \tc" , "a b c") # Tabs don't count as words
-          3a2c23041705bff52731f6d71741b6a2
+          29b153c9e33f1f3e87e909e781b23549
           # locked
           >>> accuracy("abc", "")
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("", "abc")
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("a b c d", "b c d")
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("cats.", "cats") # punctuation counts
-          427fe1a667819805b038e0f2bfdfb7af
+          c724dae4a49e254e46460a5c2ce9f821
           # locked
           >>> accuracy("", "") # Returns 100.0
-          3a2c23041705bff52731f6d71741b6a2
+          29b153c9e33f1f3e87e909e781b23549
           # locked
           """,
           'hidden': False,

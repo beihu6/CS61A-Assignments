@@ -8,43 +8,43 @@ test = {
           'code': r"""
           >>> big_limit = 10
           >>> minimum_mewtations("wind", "wind", big_limit)
-          b6945d390f61a81b0e5bc1f08f2bbf8c
+          517d384918a3d2c34d07eba9676f0bdb
           # locked
           >>> minimum_mewtations("wird", "wiry", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("wird", "bird", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("wird", "wir", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("wird", "bwird", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("speling", "spelling", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("used", "use", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("hash", "ash", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("ash", "hash", big_limit)
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           >>> minimum_mewtations("roses", "arose", big_limit)     # roses -> aroses -> arose
-          afd44fb791277b75e0e049a925d0aca9
+          45c27a29bbaeb163dec9a0eaed9c7c9c
           # locked
           >>> minimum_mewtations("tesng", "testing", big_limit)   # tesng -> testng -> testing
-          afd44fb791277b75e0e049a925d0aca9
+          45c27a29bbaeb163dec9a0eaed9c7c9c
           # locked
           >>> minimum_mewtations("rlogcul", "logical", big_limit) # rlogcul -> logcul -> logicul -> logical
-          e527e6a0cb8c2f61565ec262c971fdb2
+          91711de69bc1d16e478231c51fac5db8
           # locked
           >>> minimum_mewtations("", "", big_limit) # nothing to nothing needs no edits
-          b6945d390f61a81b0e5bc1f08f2bbf8c
+          517d384918a3d2c34d07eba9676f0bdb
           # locked
           """,
           'hidden': False,

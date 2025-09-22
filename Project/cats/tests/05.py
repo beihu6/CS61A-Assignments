@@ -8,26 +8,26 @@ test = {
           'code': r"""
           >>> abs_diff = lambda w1, w2, limit: abs(len(w2) - len(w1))
           >>> autocorrect("cul", ["culture", "cult", "cultivate"], abs_diff, 10)
-          0d4851d1d2aa096d3c43ec77f9fc5b73
+          4ad08cc6f59bb491e941db9c72f1fd60
           # locked
           >>> autocorrect("cul", ["culture", "cult", "cultivate"], abs_diff, 0)
-          9d030ba254fcf72942d1c01b5d6e9934
+          b0f43e0c0b1c27c73406a6049e481fc4
           # locked
           >>> autocorrect("wor", ["worry", "car", "part"], abs_diff, 10)
-          dda5ac735c5224ea18d0442c0cdb8385
+          d8b4ec357e19beec26a2624c4a53a35e
           # locked
           >>> first_diff = lambda w1, w2, limit: 1 if w1[0] != w2[0] else 0
           >>> autocorrect("wrod", ["word", "rod"], first_diff, 1)
-          b0d31eb4fe2a7d3a53677b97350c220e
+          7d015c6a6a2cb22a8ce6cb7b25d855d8
           # locked
           >>> autocorrect("inside", ["idea", "inside"], first_diff, 0.5)
-          161d6d2b906d9ba5493f1e1e2cb3825a
+          51b528ba30b8f4bf38b6e08ae064a4b3
           # locked
           >>> autocorrect("inside", ["idea", "insider"], first_diff, 0.5)
-          c23026f3648b2ad12a836ba6014a3a30
+          26d0235ab01545412019b455ff142516
           # locked
           >>> autocorrect("outside", ["idea", "insider"], first_diff, 0.5)
-          fb0a4fcea72813e3fdba19854ca5dfb6
+          09b04681a750c56377719aed63ffc997
           # locked
           """,
           'hidden': False,

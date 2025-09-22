@@ -1,6 +1,6 @@
 test = {
   'name': 'Problem 9',
-  'points': 1,
+  'points': 2,
   'suites': [
     {
       'cases': [
@@ -8,28 +8,23 @@ test = {
           'code': r"""
           >>> p = [[1, 4, 6, 7], [0, 4, 6, 9]]
           >>> words = ['This', 'is', 'fun']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
-          cb2f2c266cb3877baa089f61e5a837aa
+          >>> match = time_per_word(words, p)
+          >>> get_all_words(match)
+          19534957e1c84f7da7ed570021f15b71
           # locked
-          >>> times
-          51bfb58e6937805de0ca09433bf01b86
+          >>> get_all_times(match)
+          aa2d895a2e5d7bcaa2f2b23f38726547
           # locked
           >>> p = [[0, 2, 3], [2, 4, 7]]
-          >>> words_and_times =time_per_word(['hello', 'world'], p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
-          759f3d48bd44b072ef7c7a8c15e5971c
+          >>> match = time_per_word(['hello', 'world'], p)
+          >>> get_word(match, word_index=1)
+          1db4096d8d74bcd7bee03ad96f044740
           # locked
-          >>> words[1]
-          84241872daa764701a0204493e7f77dc
+          >>> get_all_times(match)
+          7f55cfc66683ae9bd44af8592e4fd001
           # locked
-          >>> times
-          365035275c0bf05d33d2c6f6a262b9a7
-          # locked
-          >>> times[0][1]
-          ab2a11320b4b5b0c2f1791ff06177e7f
+          >>> time(match, player_num=0, word_index=1)
+          52f1b72ba99dddc798bb5cebce0be695
           # locked
           """,
           'hidden': False,
@@ -39,12 +34,10 @@ test = {
         {
           'code': r"""
           >>> p = [[49, 53, 57, 58, 61, 63], [57, 61, 65, 69, 74, 76], [58, 61, 62, 65, 69, 72]]
-          >>> words = ['gonalgia', 'smopple', 'modernizer', 'posticum', 'undiscernible']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['gonalgia', 'smopple', 'modernizer', 'posticum', 'undiscernible'], p)
+          >>> get_all_words(match)
           ['gonalgia', 'smopple', 'modernizer', 'posticum', 'undiscernible']
-          >>> times
+          >>> match['times']
           [[4, 4, 1, 3, 2], [4, 4, 4, 5, 2], [3, 1, 3, 4, 3]]
           """,
           'hidden': False,
@@ -54,12 +47,10 @@ test = {
         {
           'code': r"""
           >>> p = [[47, 50, 54, 55, 58], [88, 90, 91, 96, 97], [91, 95, 99, 101, 103]]
-          >>> words = ['equalizing', 'phrymaceous', 'fluidimeter', 'seeds']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['equalizing', 'phrymaceous', 'fluidimeter', 'seeds'], p)
+          >>> get_all_words(match)
           ['equalizing', 'phrymaceous', 'fluidimeter', 'seeds']
-          >>> times
+          >>> match['times']
           [[3, 4, 1, 3], [2, 1, 5, 1], [4, 4, 2, 2]]
           """,
           'hidden': False,
@@ -69,12 +60,10 @@ test = {
         {
           'code': r"""
           >>> p = [[91, 95, 99, 100, 103, 108, 113], [73, 75, 77, 80, 85, 89, 90]]
-          >>> words = ['unsupposable', 'seeingly', 'essexite', 'policemanism', 'havenet', 'ammonionitrate']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['unsupposable', 'seeingly', 'essexite', 'policemanism', 'havenet', 'ammonionitrate'], p)
+          >>> get_all_words(match)
           ['unsupposable', 'seeingly', 'essexite', 'policemanism', 'havenet', 'ammonionitrate']
-          >>> times
+          >>> match['times']
           [[4, 4, 1, 3, 5, 5], [2, 2, 3, 5, 4, 1]]
           """,
           'hidden': False,
@@ -84,12 +73,10 @@ test = {
         {
           'code': r"""
           >>> p = [[58, 62, 66, 67, 69, 72, 76]]
-          >>> words = ['unsanitariness', 'probatively', 'unabatedly', 'reundergo', 'unweld', 'handgun']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['unsanitariness', 'probatively', 'unabatedly', 'reundergo', 'unweld', 'handgun'], p)
+          >>> get_all_words(match)
           ['unsanitariness', 'probatively', 'unabatedly', 'reundergo', 'unweld', 'handgun']
-          >>> times
+          >>> match['times']
           [[4, 4, 1, 2, 3, 4]]
           """,
           'hidden': False,
@@ -99,12 +86,10 @@ test = {
         {
           'code': r"""
           >>> p = [[35, 36, 39, 43, 45, 50, 52]]
-          >>> words = ['extort', 'elysia', 'cungeboi', 'cams', 'plagueproof', 'overdeeming']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['extort', 'elysia', 'cungeboi', 'cams', 'plagueproof', 'overdeeming'], p)
+          >>> get_all_words(match)
           ['extort', 'elysia', 'cungeboi', 'cams', 'plagueproof', 'overdeeming']
-          >>> times
+          >>> match['times']
           [[1, 3, 4, 2, 5, 2]]
           """,
           'hidden': False,
@@ -114,12 +99,10 @@ test = {
         {
           'code': r"""
           >>> p = [[46]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -129,12 +112,10 @@ test = {
         {
           'code': r"""
           >>> p = [[22, 27, 29], [54, 57, 61], [96, 101, 103]]
-          >>> words = ['glassine', 'supplies']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['glassine', 'supplies'], p)
+          >>> get_all_words(match)
           ['glassine', 'supplies']
-          >>> times
+          >>> match['times']
           [[5, 2], [3, 4], [5, 2]]
           """,
           'hidden': False,
@@ -144,12 +125,10 @@ test = {
         {
           'code': r"""
           >>> p = [[89, 90, 95], [83, 84, 89], [88, 92, 95]]
-          >>> words = ['epinaos', 'unpresented']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['epinaos', 'unpresented'], p)
+          >>> get_all_words(match)
           ['epinaos', 'unpresented']
-          >>> times
+          >>> match['times']
           [[1, 5], [1, 5], [4, 3]]
           """,
           'hidden': False,
@@ -159,12 +138,10 @@ test = {
         {
           'code': r"""
           >>> p = [[9], [24]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], []]
           """,
           'hidden': False,
@@ -174,12 +151,10 @@ test = {
         {
           'code': r"""
           >>> p = [[0], [20]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], []]
           """,
           'hidden': False,
@@ -189,12 +164,10 @@ test = {
         {
           'code': r"""
           >>> p = [[46, 49, 51], [48, 53, 57]]
-          >>> words = ['hypsochrome', 'isoborneol']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['hypsochrome', 'isoborneol'], p)
+          >>> get_all_words(match)
           ['hypsochrome', 'isoborneol']
-          >>> times
+          >>> match['times']
           [[3, 2], [5, 4]]
           """,
           'hidden': False,
@@ -204,12 +177,10 @@ test = {
         {
           'code': r"""
           >>> p = [[18, 22]]
-          >>> words = ['nailless']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['nailless'], p)
+          >>> get_all_words(match)
           ['nailless']
-          >>> times
+          >>> match['times']
           [[4]]
           """,
           'hidden': False,
@@ -219,12 +190,10 @@ test = {
         {
           'code': r"""
           >>> p = [[62, 65], [93, 97]]
-          >>> words = ['ringcraft']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['ringcraft'], p)
+          >>> get_all_words(match)
           ['ringcraft']
-          >>> times
+          >>> match['times']
           [[3], [4]]
           """,
           'hidden': False,
@@ -234,12 +203,10 @@ test = {
         {
           'code': r"""
           >>> p = [[68, 69, 70, 71], [66, 71, 74, 78], [18, 19, 21, 24]]
-          >>> words = ['rug', 'misinstruction', 'durian']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['rug', 'misinstruction', 'durian'], p)
+          >>> get_all_words(match)
           ['rug', 'misinstruction', 'durian']
-          >>> times
+          >>> match['times']
           [[1, 1, 1], [5, 3, 4], [1, 2, 3]]
           """,
           'hidden': False,
@@ -249,12 +216,10 @@ test = {
         {
           'code': r"""
           >>> p = [[1, 4, 6, 11, 13, 14]]
-          >>> words = ['epitomization', 'orchestrion', 'snideness', 'universalization', 'accroach']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['epitomization', 'orchestrion', 'snideness', 'universalization', 'accroach'], p)
+          >>> get_all_words(match)
           ['epitomization', 'orchestrion', 'snideness', 'universalization', 'accroach']
-          >>> times
+          >>> match['times']
           [[3, 2, 5, 2, 1]]
           """,
           'hidden': False,
@@ -264,12 +229,10 @@ test = {
         {
           'code': r"""
           >>> p = [[29, 30, 33, 35]]
-          >>> words = ['hecatontome', 'glioma', 'dispiteousness']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['hecatontome', 'glioma', 'dispiteousness'], p)
+          >>> get_all_words(match)
           ['hecatontome', 'glioma', 'dispiteousness']
-          >>> times
+          >>> match['times']
           [[1, 3, 2]]
           """,
           'hidden': False,
@@ -279,12 +242,10 @@ test = {
         {
           'code': r"""
           >>> p = [[92, 95, 96, 101], [30, 32, 34, 35]]
-          >>> words = ['irenically', 'spaceful', 'cautery']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['irenically', 'spaceful', 'cautery'], p)
+          >>> get_all_words(match)
           ['irenically', 'spaceful', 'cautery']
-          >>> times
+          >>> match['times']
           [[3, 1, 5], [2, 2, 1]]
           """,
           'hidden': False,
@@ -294,12 +255,10 @@ test = {
         {
           'code': r"""
           >>> p = [[44, 46], [91, 95]]
-          >>> words = ['hieromachy']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['hieromachy'], p)
+          >>> get_all_words(match)
           ['hieromachy']
-          >>> times
+          >>> match['times']
           [[2], [4]]
           """,
           'hidden': False,
@@ -309,12 +268,10 @@ test = {
         {
           'code': r"""
           >>> p = [[27, 31, 32, 34, 39], [20, 21, 24, 28, 29], [10, 11, 16, 21, 23]]
-          >>> words = ['onliest', 'tubuliporoid', 'malleability', 'scusation']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['onliest', 'tubuliporoid', 'malleability', 'scusation'], p)
+          >>> get_all_words(match)
           ['onliest', 'tubuliporoid', 'malleability', 'scusation']
-          >>> times
+          >>> match['times']
           [[4, 1, 2, 5], [1, 3, 4, 1], [1, 5, 5, 2]]
           """,
           'hidden': False,
@@ -324,12 +281,10 @@ test = {
         {
           'code': r"""
           >>> p = [[33, 37, 41, 44, 48, 51, 54]]
-          >>> words = ['caulicle', 'shilling', 'shrubbiness', 'demoded', 'commentary', 'housewright']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['caulicle', 'shilling', 'shrubbiness', 'demoded', 'commentary', 'housewright'], p)
+          >>> get_all_words(match)
           ['caulicle', 'shilling', 'shrubbiness', 'demoded', 'commentary', 'housewright']
-          >>> times
+          >>> match['times']
           [[4, 4, 3, 4, 3, 3]]
           """,
           'hidden': False,
@@ -339,12 +294,10 @@ test = {
         {
           'code': r"""
           >>> p = [[73], [55]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], []]
           """,
           'hidden': False,
@@ -354,12 +307,10 @@ test = {
         {
           'code': r"""
           >>> p = [[60, 61], [43, 47], [30, 33]]
-          >>> words = ['lithosis']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['lithosis'], p)
+          >>> get_all_words(match)
           ['lithosis']
-          >>> times
+          >>> match['times']
           [[1], [4], [3]]
           """,
           'hidden': False,
@@ -369,12 +320,10 @@ test = {
         {
           'code': r"""
           >>> p = [[93, 97, 98, 101, 105, 109], [55, 56, 58, 59, 61, 65], [82, 85, 87, 88, 92, 96]]
-          >>> words = ['pemmicanize', 'diplosphenal', 'cholecystogram', 'maximization', 'arenilitic']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['pemmicanize', 'diplosphenal', 'cholecystogram', 'maximization', 'arenilitic'], p)
+          >>> get_all_words(match)
           ['pemmicanize', 'diplosphenal', 'cholecystogram', 'maximization', 'arenilitic']
-          >>> times
+          >>> match['times']
           [[4, 1, 3, 4, 4], [1, 2, 1, 2, 4], [3, 2, 1, 4, 4]]
           """,
           'hidden': False,
@@ -384,12 +333,10 @@ test = {
         {
           'code': r"""
           >>> p = [[37], [3], [0]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -399,12 +346,10 @@ test = {
         {
           'code': r"""
           >>> p = [[92, 96, 99, 102], [43, 45, 47, 51], [34, 36, 38, 39]]
-          >>> words = ['distressedly', 'gibbet', 'cannily']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['distressedly', 'gibbet', 'cannily'], p)
+          >>> get_all_words(match)
           ['distressedly', 'gibbet', 'cannily']
-          >>> times
+          >>> match['times']
           [[4, 3, 3], [2, 2, 4], [2, 2, 1]]
           """,
           'hidden': False,
@@ -414,12 +359,10 @@ test = {
         {
           'code': r"""
           >>> p = [[1, 5, 8, 11], [0, 4, 6, 10], [62, 65, 66, 68]]
-          >>> words = ['paramorphic', 'triplocaulescent', 'postprandially']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['paramorphic', 'triplocaulescent', 'postprandially'], p)
+          >>> get_all_words(match)
           ['paramorphic', 'triplocaulescent', 'postprandially']
-          >>> times
+          >>> match['times']
           [[4, 3, 3], [4, 2, 4], [3, 1, 2]]
           """,
           'hidden': False,
@@ -429,12 +372,10 @@ test = {
         {
           'code': r"""
           >>> p = [[63, 64, 69], [90, 93, 94]]
-          >>> words = ['sheered', 'electrofused']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['sheered', 'electrofused'], p)
+          >>> get_all_words(match)
           ['sheered', 'electrofused']
-          >>> times
+          >>> match['times']
           [[1, 5], [3, 1]]
           """,
           'hidden': False,
@@ -444,12 +385,10 @@ test = {
         {
           'code': r"""
           >>> p = [[87, 91, 94, 96, 99, 102], [50, 54, 58, 60, 63, 66], [57, 61, 64, 66, 69, 73]]
-          >>> words = ['crotonaldehyde', 'unhabitableness', 'nidification', 'lampless', 'fibrochondroma']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['crotonaldehyde', 'unhabitableness', 'nidification', 'lampless', 'fibrochondroma'], p)
+          >>> get_all_words(match)
           ['crotonaldehyde', 'unhabitableness', 'nidification', 'lampless', 'fibrochondroma']
-          >>> times
+          >>> match['times']
           [[4, 3, 2, 3, 3], [4, 4, 2, 3, 3], [4, 3, 2, 3, 4]]
           """,
           'hidden': False,
@@ -459,12 +398,10 @@ test = {
         {
           'code': r"""
           >>> p = [[63]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -474,12 +411,10 @@ test = {
         {
           'code': r"""
           >>> p = [[51, 54]]
-          >>> words = ['prissy']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['prissy'], p)
+          >>> get_all_words(match)
           ['prissy']
-          >>> times
+          >>> match['times']
           [[3]]
           """,
           'hidden': False,
@@ -489,12 +424,10 @@ test = {
         {
           'code': r"""
           >>> p = [[31, 34, 39, 42, 47, 50], [73, 75, 78, 81, 86, 89]]
-          >>> words = ['sinfonietta', 'trigon', 'effluviate', 'unhuman', 'energeia']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['sinfonietta', 'trigon', 'effluviate', 'unhuman', 'energeia'], p)
+          >>> get_all_words(match)
           ['sinfonietta', 'trigon', 'effluviate', 'unhuman', 'energeia']
-          >>> times
+          >>> match['times']
           [[3, 5, 3, 5, 3], [2, 3, 3, 5, 3]]
           """,
           'hidden': False,
@@ -504,12 +437,10 @@ test = {
         {
           'code': r"""
           >>> p = [[93, 95, 97, 98, 101], [75, 80, 84, 89, 93]]
-          >>> words = ['traitor', 'tablespoon', 'anytime', 'ungotten']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['traitor', 'tablespoon', 'anytime', 'ungotten'], p)
+          >>> get_all_words(match)
           ['traitor', 'tablespoon', 'anytime', 'ungotten']
-          >>> times
+          >>> match['times']
           [[2, 2, 1, 3], [5, 4, 5, 4]]
           """,
           'hidden': False,
@@ -519,12 +450,10 @@ test = {
         {
           'code': r"""
           >>> p = [[66, 69], [85, 86]]
-          >>> words = ['boucherism']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['boucherism'], p)
+          >>> get_all_words(match)
           ['boucherism']
-          >>> times
+          >>> match['times']
           [[3], [1]]
           """,
           'hidden': False,
@@ -534,12 +463,10 @@ test = {
         {
           'code': r"""
           >>> p = [[74, 75], [74, 75], [41, 43]]
-          >>> words = ['uncertainty']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['uncertainty'], p)
+          >>> get_all_words(match)
           ['uncertainty']
-          >>> times
+          >>> match['times']
           [[1], [1], [2]]
           """,
           'hidden': False,
@@ -549,12 +476,10 @@ test = {
         {
           'code': r"""
           >>> p = [[15, 18, 19, 23]]
-          >>> words = ['redominate', 'dugong', 'cryptodiran']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['redominate', 'dugong', 'cryptodiran'], p)
+          >>> get_all_words(match)
           ['redominate', 'dugong', 'cryptodiran']
-          >>> times
+          >>> match['times']
           [[3, 1, 4]]
           """,
           'hidden': False,
@@ -564,12 +489,10 @@ test = {
         {
           'code': r"""
           >>> p = [[57, 60, 62, 66]]
-          >>> words = ['estivage', 'hypersensualism', 'aminoacetal']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['estivage', 'hypersensualism', 'aminoacetal'], p)
+          >>> get_all_words(match)
           ['estivage', 'hypersensualism', 'aminoacetal']
-          >>> times
+          >>> match['times']
           [[3, 2, 4]]
           """,
           'hidden': False,
@@ -579,12 +502,10 @@ test = {
         {
           'code': r"""
           >>> p = [[48, 53, 54, 55, 58, 62], [85, 86, 90, 94, 95, 100], [23, 25, 27, 32, 33, 37]]
-          >>> words = ['semipervious', 'cactoid', 'quadrialate', 'preflattery', 'emancipation']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['semipervious', 'cactoid', 'quadrialate', 'preflattery', 'emancipation'], p)
+          >>> get_all_words(match)
           ['semipervious', 'cactoid', 'quadrialate', 'preflattery', 'emancipation']
-          >>> times
+          >>> match['times']
           [[5, 1, 1, 3, 4], [1, 4, 4, 1, 5], [2, 2, 5, 1, 4]]
           """,
           'hidden': False,
@@ -594,12 +515,10 @@ test = {
         {
           'code': r"""
           >>> p = [[35, 36, 40, 44, 46, 47, 50], [53, 58, 62, 67, 68, 70, 74]]
-          >>> words = ['otoconial', 'puboprostatic', 'tumescent', 'keraunograph', 'telecaster', 'selenigenous']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['otoconial', 'puboprostatic', 'tumescent', 'keraunograph', 'telecaster', 'selenigenous'], p)
+          >>> get_all_words(match)
           ['otoconial', 'puboprostatic', 'tumescent', 'keraunograph', 'telecaster', 'selenigenous']
-          >>> times
+          >>> match['times']
           [[1, 4, 4, 2, 1, 3], [5, 4, 5, 1, 2, 4]]
           """,
           'hidden': False,
@@ -609,12 +528,10 @@ test = {
         {
           'code': r"""
           >>> p = [[2, 5, 9, 10]]
-          >>> words = ['unsculptured', 'quagginess', 'indisputableness']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['unsculptured', 'quagginess', 'indisputableness'], p)
+          >>> get_all_words(match)
           ['unsculptured', 'quagginess', 'indisputableness']
-          >>> times
+          >>> match['times']
           [[3, 4, 1]]
           """,
           'hidden': False,
@@ -624,12 +541,10 @@ test = {
         {
           'code': r"""
           >>> p = [[55], [37], [18]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -639,12 +554,10 @@ test = {
         {
           'code': r"""
           >>> p = [[12, 13, 15, 20, 24], [51, 55, 56, 59, 60], [82, 83, 85, 90, 94]]
-          >>> words = ['extol', 'siscowet', 'nevo', 'driftweed']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['extol', 'siscowet', 'nevo', 'driftweed'], p)
+          >>> get_all_words(match)
           ['extol', 'siscowet', 'nevo', 'driftweed']
-          >>> times
+          >>> match['times']
           [[1, 2, 5, 4], [4, 1, 3, 1], [1, 2, 5, 4]]
           """,
           'hidden': False,
@@ -654,12 +567,10 @@ test = {
         {
           'code': r"""
           >>> p = [[57, 61, 65, 67, 72, 76], [28, 33, 35, 37, 42, 45]]
-          >>> words = ['tomtate', 'holland', 'nursedom', 'epidictical', 'defortify']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['tomtate', 'holland', 'nursedom', 'epidictical', 'defortify'], p)
+          >>> get_all_words(match)
           ['tomtate', 'holland', 'nursedom', 'epidictical', 'defortify']
-          >>> times
+          >>> match['times']
           [[4, 4, 2, 5, 4], [5, 2, 2, 5, 3]]
           """,
           'hidden': False,
@@ -669,12 +580,10 @@ test = {
         {
           'code': r"""
           >>> p = [[25], [24], [2]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -684,12 +593,10 @@ test = {
         {
           'code': r"""
           >>> p = [[42]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -699,12 +606,10 @@ test = {
         {
           'code': r"""
           >>> p = [[84, 87, 88, 89, 90], [39, 43, 45, 49, 51], [52, 53, 57, 59, 63]]
-          >>> words = ['pharyngognathous', 'metamerically', 'toxone', 'nucleiform']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['pharyngognathous', 'metamerically', 'toxone', 'nucleiform'], p)
+          >>> get_all_words(match)
           ['pharyngognathous', 'metamerically', 'toxone', 'nucleiform']
-          >>> times
+          >>> match['times']
           [[3, 1, 1, 1], [4, 2, 4, 2], [1, 4, 2, 4]]
           """,
           'hidden': False,
@@ -714,12 +619,10 @@ test = {
         {
           'code': r"""
           >>> p = [[13, 16, 20, 22, 27, 29]]
-          >>> words = ['missile', 'tillot', 'douser', 'twankingly', 'eccentrate']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['missile', 'tillot', 'douser', 'twankingly', 'eccentrate'], p)
+          >>> get_all_words(match)
           ['missile', 'tillot', 'douser', 'twankingly', 'eccentrate']
-          >>> times
+          >>> match['times']
           [[3, 4, 2, 5, 2]]
           """,
           'hidden': False,
@@ -729,12 +632,10 @@ test = {
         {
           'code': r"""
           >>> p = [[70]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -744,12 +645,10 @@ test = {
         {
           'code': r"""
           >>> p = [[67, 68, 73, 74, 79], [12, 17, 20, 21, 25], [55, 58, 62, 66, 67]]
-          >>> words = ['unambiguously', 'standing', 'cameroon', 'unpretendingly']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['unambiguously', 'standing', 'cameroon', 'unpretendingly'], p)
+          >>> get_all_words(match)
           ['unambiguously', 'standing', 'cameroon', 'unpretendingly']
-          >>> times
+          >>> match['times']
           [[1, 5, 1, 5], [5, 3, 1, 4], [3, 4, 4, 1]]
           """,
           'hidden': False,
@@ -759,12 +658,10 @@ test = {
         {
           'code': r"""
           >>> p = [[54, 57], [76, 80], [24, 25]]
-          >>> words = ['megascleric']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['megascleric'], p)
+          >>> get_all_words(match)
           ['megascleric']
-          >>> times
+          >>> match['times']
           [[3], [4], [1]]
           """,
           'hidden': False,
@@ -774,12 +671,10 @@ test = {
         {
           'code': r"""
           >>> p = [[6, 11], [91, 95], [60, 63]]
-          >>> words = ['designee']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['designee'], p)
+          >>> get_all_words(match)
           ['designee']
-          >>> times
+          >>> match['times']
           [[5], [4], [3]]
           """,
           'hidden': False,
@@ -789,12 +684,10 @@ test = {
         {
           'code': r"""
           >>> p = [[14, 15, 20, 24, 25]]
-          >>> words = ['dextrousness', 'whirley', 'coldly', 'compendiary']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['dextrousness', 'whirley', 'coldly', 'compendiary'], p)
+          >>> get_all_words(match)
           ['dextrousness', 'whirley', 'coldly', 'compendiary']
-          >>> times
+          >>> match['times']
           [[1, 5, 4, 1]]
           """,
           'hidden': False,
@@ -804,12 +697,10 @@ test = {
         {
           'code': r"""
           >>> p = [[21, 23, 24]]
-          >>> words = ['plowfoot', 'caducicorn']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['plowfoot', 'caducicorn'], p)
+          >>> get_all_words(match)
           ['plowfoot', 'caducicorn']
-          >>> times
+          >>> match['times']
           [[2, 1]]
           """,
           'hidden': False,
@@ -819,12 +710,10 @@ test = {
         {
           'code': r"""
           >>> p = [[61, 66, 69, 74, 79, 80]]
-          >>> words = ['signist', 'plash', 'unbraceleted', 'runner', 'nickeline']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['signist', 'plash', 'unbraceleted', 'runner', 'nickeline'], p)
+          >>> get_all_words(match)
           ['signist', 'plash', 'unbraceleted', 'runner', 'nickeline']
-          >>> times
+          >>> match['times']
           [[5, 3, 5, 5, 1]]
           """,
           'hidden': False,
@@ -834,12 +723,10 @@ test = {
         {
           'code': r"""
           >>> p = [[7, 9, 12, 15, 18], [53, 54, 58, 63, 64], [28, 30, 35, 36, 41]]
-          >>> words = ['ergastoplasmic', 'sulphurage', 'audibility', 'deuteride']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['ergastoplasmic', 'sulphurage', 'audibility', 'deuteride'], p)
+          >>> get_all_words(match)
           ['ergastoplasmic', 'sulphurage', 'audibility', 'deuteride']
-          >>> times
+          >>> match['times']
           [[2, 3, 3, 3], [1, 4, 5, 1], [2, 5, 1, 5]]
           """,
           'hidden': False,
@@ -849,12 +736,10 @@ test = {
         {
           'code': r"""
           >>> p = [[22, 26, 31, 32, 37, 39, 40]]
-          >>> words = ['uncontestable', 'millage', 'unbudging', 'hydrostatic', 'enterospasm', 'ectypography']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['uncontestable', 'millage', 'unbudging', 'hydrostatic', 'enterospasm', 'ectypography'], p)
+          >>> get_all_words(match)
           ['uncontestable', 'millage', 'unbudging', 'hydrostatic', 'enterospasm', 'ectypography']
-          >>> times
+          >>> match['times']
           [[4, 5, 1, 5, 2, 1]]
           """,
           'hidden': False,
@@ -864,12 +749,10 @@ test = {
         {
           'code': r"""
           >>> p = [[26, 31], [40, 44]]
-          >>> words = ['remissful']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['remissful'], p)
+          >>> get_all_words(match)
           ['remissful']
-          >>> times
+          >>> match['times']
           [[5], [4]]
           """,
           'hidden': False,
@@ -879,12 +762,10 @@ test = {
         {
           'code': r"""
           >>> p = [[89, 91, 93, 95, 98, 100, 101], [83, 88, 92, 93, 95, 96, 98], [48, 50, 54, 56, 60, 64, 67]]
-          >>> words = ['sacculus', 'sarcodous', 'microbiological', 'ruddy', 'gobble', 'pozzuolana']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['sacculus', 'sarcodous', 'microbiological', 'ruddy', 'gobble', 'pozzuolana'], p)
+          >>> get_all_words(match)
           ['sacculus', 'sarcodous', 'microbiological', 'ruddy', 'gobble', 'pozzuolana']
-          >>> times
+          >>> match['times']
           [[2, 2, 2, 3, 2, 1], [5, 4, 1, 2, 1, 2], [2, 4, 2, 4, 4, 3]]
           """,
           'hidden': False,
@@ -894,12 +775,10 @@ test = {
         {
           'code': r"""
           >>> p = [[86, 87], [90, 94]]
-          >>> words = ['monothelious']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['monothelious'], p)
+          >>> get_all_words(match)
           ['monothelious']
-          >>> times
+          >>> match['times']
           [[1], [4]]
           """,
           'hidden': False,
@@ -909,12 +788,10 @@ test = {
         {
           'code': r"""
           >>> p = [[74, 76, 78, 83]]
-          >>> words = ['boy', 'leaverwood', 'bounteousness']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['boy', 'leaverwood', 'bounteousness'], p)
+          >>> get_all_words(match)
           ['boy', 'leaverwood', 'bounteousness']
-          >>> times
+          >>> match['times']
           [[2, 2, 5]]
           """,
           'hidden': False,
@@ -924,12 +801,10 @@ test = {
         {
           'code': r"""
           >>> p = [[16, 17, 20, 21, 25, 26], [46, 49, 52, 57, 61, 63], [96, 97, 98, 100, 103, 108]]
-          >>> words = ['impedient', 'allochiral', 'hear', 'snur', 'myosarcomatous']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['impedient', 'allochiral', 'hear', 'snur', 'myosarcomatous'], p)
+          >>> get_all_words(match)
           ['impedient', 'allochiral', 'hear', 'snur', 'myosarcomatous']
-          >>> times
+          >>> match['times']
           [[1, 3, 1, 4, 1], [3, 3, 5, 4, 2], [1, 1, 2, 3, 5]]
           """,
           'hidden': False,
@@ -939,12 +814,10 @@ test = {
         {
           'code': r"""
           >>> p = [[89, 91], [37, 39], [63, 67]]
-          >>> words = ['sulphurproof']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['sulphurproof'], p)
+          >>> get_all_words(match)
           ['sulphurproof']
-          >>> times
+          >>> match['times']
           [[2], [2], [4]]
           """,
           'hidden': False,
@@ -954,12 +827,10 @@ test = {
         {
           'code': r"""
           >>> p = [[62], [50], [26]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -969,12 +840,10 @@ test = {
         {
           'code': r"""
           >>> p = [[44, 47, 51, 56, 58, 60], [4, 7, 11, 16, 19, 22]]
-          >>> words = ['neoza', 'detinet', 'repolymerization', 'alchemy', 'caphar']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['neoza', 'detinet', 'repolymerization', 'alchemy', 'caphar'], p)
+          >>> get_all_words(match)
           ['neoza', 'detinet', 'repolymerization', 'alchemy', 'caphar']
-          >>> times
+          >>> match['times']
           [[3, 4, 5, 2, 2], [3, 4, 5, 3, 3]]
           """,
           'hidden': False,
@@ -984,12 +853,10 @@ test = {
         {
           'code': r"""
           >>> p = [[56, 61]]
-          >>> words = ['deediness']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['deediness'], p)
+          >>> get_all_words(match)
           ['deediness']
-          >>> times
+          >>> match['times']
           [[5]]
           """,
           'hidden': False,
@@ -999,12 +866,10 @@ test = {
         {
           'code': r"""
           >>> p = [[60, 62, 65, 68], [55, 56, 59, 60], [89, 92, 97, 100]]
-          >>> words = ['outstartle', 'varicosed', 'ventilator']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['outstartle', 'varicosed', 'ventilator'], p)
+          >>> get_all_words(match)
           ['outstartle', 'varicosed', 'ventilator']
-          >>> times
+          >>> match['times']
           [[2, 3, 3], [1, 3, 1], [3, 5, 3]]
           """,
           'hidden': False,
@@ -1014,12 +879,10 @@ test = {
         {
           'code': r"""
           >>> p = [[1, 4, 9, 14, 17, 22, 27]]
-          >>> words = ['evaporability', 'ultradolichocephalic', 'kinetophone', 'supernaturalness', 'schout', 'woodlander']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['evaporability', 'ultradolichocephalic', 'kinetophone', 'supernaturalness', 'schout', 'woodlander'], p)
+          >>> get_all_words(match)
           ['evaporability', 'ultradolichocephalic', 'kinetophone', 'supernaturalness', 'schout', 'woodlander']
-          >>> times
+          >>> match['times']
           [[3, 5, 5, 3, 5, 5]]
           """,
           'hidden': False,
@@ -1029,12 +892,10 @@ test = {
         {
           'code': r"""
           >>> p = [[5]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -1044,12 +905,10 @@ test = {
         {
           'code': r"""
           >>> p = [[11], [37], [36]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -1059,12 +918,10 @@ test = {
         {
           'code': r"""
           >>> p = [[54, 55, 58, 62], [74, 76, 81, 82], [41, 43, 46, 47]]
-          >>> words = ['payable', 'jaunt', 'oleostearin']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['payable', 'jaunt', 'oleostearin'], p)
+          >>> get_all_words(match)
           ['payable', 'jaunt', 'oleostearin']
-          >>> times
+          >>> match['times']
           [[1, 3, 4], [2, 5, 1], [2, 3, 1]]
           """,
           'hidden': False,
@@ -1074,12 +931,10 @@ test = {
         {
           'code': r"""
           >>> p = [[33, 34], [39, 40]]
-          >>> words = ['entropium']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['entropium'], p)
+          >>> get_all_words(match)
           ['entropium']
-          >>> times
+          >>> match['times']
           [[1], [1]]
           """,
           'hidden': False,
@@ -1089,12 +944,10 @@ test = {
         {
           'code': r"""
           >>> p = [[72, 77, 82, 85, 90, 91], [5, 9, 14, 17, 21, 22]]
-          >>> words = ['stookie', 'withsave', 'subchoroid', 'briefing', 'upbelch']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['stookie', 'withsave', 'subchoroid', 'briefing', 'upbelch'], p)
+          >>> get_all_words(match)
           ['stookie', 'withsave', 'subchoroid', 'briefing', 'upbelch']
-          >>> times
+          >>> match['times']
           [[5, 5, 3, 5, 1], [4, 5, 3, 4, 1]]
           """,
           'hidden': False,
@@ -1104,12 +957,10 @@ test = {
         {
           'code': r"""
           >>> p = [[29, 34], [69, 70], [71, 72]]
-          >>> words = ['battlewise']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['battlewise'], p)
+          >>> get_all_words(match)
           ['battlewise']
-          >>> times
+          >>> match['times']
           [[5], [1], [1]]
           """,
           'hidden': False,
@@ -1119,12 +970,10 @@ test = {
         {
           'code': r"""
           >>> p = [[8, 10, 15, 18, 23, 26], [3, 7, 12, 13, 16, 17], [86, 89, 90, 95, 98, 101]]
-          >>> words = ['muscoid', 'reliquidation', 'broad', 'tugging', 'retardant']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['muscoid', 'reliquidation', 'broad', 'tugging', 'retardant'], p)
+          >>> get_all_words(match)
           ['muscoid', 'reliquidation', 'broad', 'tugging', 'retardant']
-          >>> times
+          >>> match['times']
           [[2, 5, 3, 5, 3], [4, 5, 1, 3, 1], [3, 1, 5, 3, 3]]
           """,
           'hidden': False,
@@ -1134,12 +983,10 @@ test = {
         {
           'code': r"""
           >>> p = [[71, 73, 75, 80, 84], [3, 8, 10, 14, 16]]
-          >>> words = ['hexatomic', 'trophobiosis', 'parascenium', 'gibbet']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['hexatomic', 'trophobiosis', 'parascenium', 'gibbet'], p)
+          >>> get_all_words(match)
           ['hexatomic', 'trophobiosis', 'parascenium', 'gibbet']
-          >>> times
+          >>> match['times']
           [[2, 2, 5, 4], [5, 2, 4, 2]]
           """,
           'hidden': False,
@@ -1149,12 +996,10 @@ test = {
         {
           'code': r"""
           >>> p = [[2], [83], [56]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -1164,12 +1009,10 @@ test = {
         {
           'code': r"""
           >>> p = [[9, 13, 18, 19, 23, 26, 29], [85, 89, 92, 94, 97, 102, 105], [5, 9, 12, 13, 14, 15, 18]]
-          >>> words = ['unimpressed', 'unexcusableness', 'bismuthyl', 'adapt', 'refutable', 'fluoridize']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['unimpressed', 'unexcusableness', 'bismuthyl', 'adapt', 'refutable', 'fluoridize'], p)
+          >>> get_all_words(match)
           ['unimpressed', 'unexcusableness', 'bismuthyl', 'adapt', 'refutable', 'fluoridize']
-          >>> times
+          >>> match['times']
           [[4, 5, 1, 4, 3, 3], [4, 3, 2, 3, 5, 3], [4, 3, 1, 1, 1, 3]]
           """,
           'hidden': False,
@@ -1179,12 +1022,10 @@ test = {
         {
           'code': r"""
           >>> p = [[82, 86], [16, 18]]
-          >>> words = ['ab']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['ab'], p)
+          >>> get_all_words(match)
           ['ab']
-          >>> times
+          >>> match['times']
           [[4], [2]]
           """,
           'hidden': False,
@@ -1194,12 +1035,10 @@ test = {
         {
           'code': r"""
           >>> p = [[77, 82, 83, 88, 92]]
-          >>> words = ['theophysical', 'penceless', 'bromothymol', 'reticuloramose']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['theophysical', 'penceless', 'bromothymol', 'reticuloramose'], p)
+          >>> get_all_words(match)
           ['theophysical', 'penceless', 'bromothymol', 'reticuloramose']
-          >>> times
+          >>> match['times']
           [[5, 1, 5, 4]]
           """,
           'hidden': False,
@@ -1209,12 +1048,10 @@ test = {
         {
           'code': r"""
           >>> p = [[90, 91, 93, 97, 98], [64, 68, 70, 73, 78], [95, 100, 103, 108, 113]]
-          >>> words = ['beshag', 'monument', 'appressor', 'tutu']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['beshag', 'monument', 'appressor', 'tutu'], p)
+          >>> get_all_words(match)
           ['beshag', 'monument', 'appressor', 'tutu']
-          >>> times
+          >>> match['times']
           [[1, 2, 4, 1], [4, 2, 3, 5], [5, 3, 5, 5]]
           """,
           'hidden': False,
@@ -1224,12 +1061,10 @@ test = {
         {
           'code': r"""
           >>> p = [[86], [26], [8]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -1239,12 +1074,10 @@ test = {
         {
           'code': r"""
           >>> p = [[25, 26, 30], [50, 54, 59], [52, 55, 60]]
-          >>> words = ['confidentiality', 'inclementness']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['confidentiality', 'inclementness'], p)
+          >>> get_all_words(match)
           ['confidentiality', 'inclementness']
-          >>> times
+          >>> match['times']
           [[1, 4], [4, 5], [3, 5]]
           """,
           'hidden': False,
@@ -1254,12 +1087,10 @@ test = {
         {
           'code': r"""
           >>> p = [[58, 63]]
-          >>> words = ['sardius']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['sardius'], p)
+          >>> get_all_words(match)
           ['sardius']
-          >>> times
+          >>> match['times']
           [[5]]
           """,
           'hidden': False,
@@ -1269,12 +1100,10 @@ test = {
         {
           'code': r"""
           >>> p = [[77, 81, 85, 89]]
-          >>> words = ['bluehearts', 'repugnatorial', 'bescorch']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['bluehearts', 'repugnatorial', 'bescorch'], p)
+          >>> get_all_words(match)
           ['bluehearts', 'repugnatorial', 'bescorch']
-          >>> times
+          >>> match['times']
           [[4, 4, 4]]
           """,
           'hidden': False,
@@ -1284,12 +1113,10 @@ test = {
         {
           'code': r"""
           >>> p = [[75, 78, 80]]
-          >>> words = ['efflorescency', 'presay']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['efflorescency', 'presay'], p)
+          >>> get_all_words(match)
           ['efflorescency', 'presay']
-          >>> times
+          >>> match['times']
           [[3, 2]]
           """,
           'hidden': False,
@@ -1299,12 +1126,10 @@ test = {
         {
           'code': r"""
           >>> p = [[53, 54, 59, 61], [47, 50, 54, 56]]
-          >>> words = ['myologist', 'dualistic', 'becense']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['myologist', 'dualistic', 'becense'], p)
+          >>> get_all_words(match)
           ['myologist', 'dualistic', 'becense']
-          >>> times
+          >>> match['times']
           [[1, 5, 2], [3, 4, 2]]
           """,
           'hidden': False,
@@ -1314,12 +1139,10 @@ test = {
         {
           'code': r"""
           >>> p = [[85, 90, 93, 95, 98, 102, 105], [5, 10, 12, 13, 14, 18, 22], [91, 94, 97, 100, 102, 105, 108]]
-          >>> words = ['tentacle', 'nonrestitution', 'interventional', 'demiditone', 'chrysophilite', 'idiosyncratically']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['tentacle', 'nonrestitution', 'interventional', 'demiditone', 'chrysophilite', 'idiosyncratically'], p)
+          >>> get_all_words(match)
           ['tentacle', 'nonrestitution', 'interventional', 'demiditone', 'chrysophilite', 'idiosyncratically']
-          >>> times
+          >>> match['times']
           [[5, 3, 2, 3, 4, 3], [5, 2, 1, 1, 4, 4], [3, 3, 3, 2, 3, 3]]
           """,
           'hidden': False,
@@ -1329,12 +1152,10 @@ test = {
         {
           'code': r"""
           >>> p = [[95, 98, 100, 103], [1, 3, 8, 13]]
-          >>> words = ['clique', 'spuriae', 'introspectable']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['clique', 'spuriae', 'introspectable'], p)
+          >>> get_all_words(match)
           ['clique', 'spuriae', 'introspectable']
-          >>> times
+          >>> match['times']
           [[3, 2, 3], [2, 5, 5]]
           """,
           'hidden': False,
@@ -1344,12 +1165,10 @@ test = {
         {
           'code': r"""
           >>> p = [[10, 15, 19, 24, 28, 31]]
-          >>> words = ['epicotyledonary', 'hiro', 'tremolo', 'ringgiving', 'pignoratitious']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['epicotyledonary', 'hiro', 'tremolo', 'ringgiving', 'pignoratitious'], p)
+          >>> get_all_words(match)
           ['epicotyledonary', 'hiro', 'tremolo', 'ringgiving', 'pignoratitious']
-          >>> times
+          >>> match['times']
           [[5, 4, 5, 4, 3]]
           """,
           'hidden': False,
@@ -1359,12 +1178,10 @@ test = {
         {
           'code': r"""
           >>> p = [[31, 36, 39, 42, 44, 47, 50]]
-          >>> words = ['wickerworker', 'disdiaclastic', 'tutoyer', 'fibrilliferous', 'undiscernedly', 'gloomily']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['wickerworker', 'disdiaclastic', 'tutoyer', 'fibrilliferous', 'undiscernedly', 'gloomily'], p)
+          >>> get_all_words(match)
           ['wickerworker', 'disdiaclastic', 'tutoyer', 'fibrilliferous', 'undiscernedly', 'gloomily']
-          >>> times
+          >>> match['times']
           [[5, 3, 3, 2, 3, 3]]
           """,
           'hidden': False,
@@ -1374,12 +1191,10 @@ test = {
         {
           'code': r"""
           >>> p = [[7]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -1389,12 +1204,10 @@ test = {
         {
           'code': r"""
           >>> p = [[87]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -1404,12 +1217,10 @@ test = {
         {
           'code': r"""
           >>> p = [[37, 40, 43, 44, 48, 53]]
-          >>> words = ['quadratical', 'principiate', 'archinfamy', 'cacomixle', 'endonuclear']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['quadratical', 'principiate', 'archinfamy', 'cacomixle', 'endonuclear'], p)
+          >>> get_all_words(match)
           ['quadratical', 'principiate', 'archinfamy', 'cacomixle', 'endonuclear']
-          >>> times
+          >>> match['times']
           [[3, 3, 1, 4, 5]]
           """,
           'hidden': False,
@@ -1419,12 +1230,10 @@ test = {
         {
           'code': r"""
           >>> p = [[69]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -1434,12 +1243,10 @@ test = {
         {
           'code': r"""
           >>> p = [[3, 8]]
-          >>> words = ['subframe']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['subframe'], p)
+          >>> get_all_words(match)
           ['subframe']
-          >>> times
+          >>> match['times']
           [[5]]
           """,
           'hidden': False,
@@ -1449,12 +1256,10 @@ test = {
         {
           'code': r"""
           >>> p = [[40], [49]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], []]
           """,
           'hidden': False,
@@ -1464,12 +1269,10 @@ test = {
         {
           'code': r"""
           >>> p = [[8, 12, 16, 21, 26, 30]]
-          >>> words = ['waling', 'sycophantishly', 'mistresshood', 'lazzarone', 'define']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['waling', 'sycophantishly', 'mistresshood', 'lazzarone', 'define'], p)
+          >>> get_all_words(match)
           ['waling', 'sycophantishly', 'mistresshood', 'lazzarone', 'define']
-          >>> times
+          >>> match['times']
           [[4, 4, 5, 5, 4]]
           """,
           'hidden': False,
@@ -1479,12 +1282,10 @@ test = {
         {
           'code': r"""
           >>> p = [[31, 35], [97, 102], [27, 29]]
-          >>> words = ['donary']
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word(['donary'], p)
+          >>> get_all_words(match)
           ['donary']
-          >>> times
+          >>> match['times']
           [[4], [5], [2]]
           """,
           'hidden': False,
@@ -1494,12 +1295,10 @@ test = {
         {
           'code': r"""
           >>> p = [[5], [86], [1]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -1509,12 +1308,10 @@ test = {
         {
           'code': r"""
           >>> p = [[79]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[]]
           """,
           'hidden': False,
@@ -1524,12 +1321,10 @@ test = {
         {
           'code': r"""
           >>> p = [[59], [68], [75]]
-          >>> words = []
-          >>> words_and_times = time_per_word(words, p)
-          >>> words, times = words_and_times['words'], words_and_times['times']
-          >>> words
+          >>> match = time_per_word([], p)
+          >>> get_all_words(match)
           []
-          >>> times
+          >>> match['times']
           [[], [], []]
           """,
           'hidden': False,
@@ -1542,6 +1337,34 @@ test = {
       >>> from cats import *
       """,
       'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> test.swap_implementations(cats) # Make sure the abstraction barrier isn't crossed!
+          >>> p = [[1, 4, 6, 7], [0, 4, 6, 9]]
+          >>> words = ['This', 'is', 'fun']
+          >>> match = cats.time_per_word(words, p)
+          >>> cats.get_word(match, 0)
+          'This'
+          >>> cats.time(match, 0, 0)
+          3
+          """,
+          'hidden': False,
+          'locked': False,
+          'multiline': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import cats
+      >>> import tests.abstraction_check as test # Make sure the abstraction barrier isn't crossed!
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(cats)
+      """,
       'type': 'doctest'
     }
   ]

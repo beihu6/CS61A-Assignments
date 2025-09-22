@@ -252,6 +252,7 @@ def is_always_roll(strategy, goal=GOAL):
 
 #original_function是一个函数    
 #该函数会返回一个original_function的统计意义上的平均数函数
+#我认为的该项目最有价值的一个函数编写
 def make_averaged(original_function, samples_count=1000):
     """Return a function that returns the average value of ORIGINAL_FUNCTION
     called SAMPLES_COUNT times.
@@ -363,6 +364,7 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
+
     return 6  # Remove this line once implemented.
     # END PROBLEM 12
 
