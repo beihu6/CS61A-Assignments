@@ -474,13 +474,15 @@ class SlowThrower(ThrowerAnt):
 
     name = 'Slow'
     food_cost = 6
+    damage = 0
     # BEGIN Problem EC 1
-    implemented = False   # Change to True to view in the GUI
+    implemented = True   # Change to True to view in the GUI
     # END Problem EC 1
 
     def throw_at(self, target):
         # BEGIN Problem EC 1
         "*** YOUR CODE HERE ***"
+        
         # END Problem EC 1
 
 
